@@ -75,12 +75,43 @@ fun AddMemo(memoList: SnapshotStateList<Memo>) {
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun ColumnScope.MemoList(onClickAction: (Int) -> Unit, memoList: SnapshotStateList<Memo>) {
+//    Column(
+//        modifier = Modifier
+//            .weight(1f)
+//    ) {
+//
+//        for (memo in memoList) {
+//            key(memo.id) {
+//                Card(
+//                    modifier = Modifier
+//                        .height(100.dp)
+//                        .background(Color.White)
+//                        .padding(
+//                            horizontal = 16.dp,
+//                            vertical = 8.dp
+//                        )
+//                        .fillMaxWidth(),
+//                    backgroundColor = Color.LightGray,
+//                    onClick = {
+//                        onClickAction(memo.id)
+//                    }
+//                ) {
+//                    Text(
+//                        text = memo.text,
+//                        modifier = Modifier.fillMaxSize()
+//                    )
+//                }
+//            }
+//        }
+//    }
+
     LazyColumn(
         modifier = Modifier
             .weight(1f)
     ) {
         items(
-            items = memoList
+            items = memoList,
+            key = { it.id }
         ) { memo ->
             Card(
                 modifier = Modifier
